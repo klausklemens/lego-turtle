@@ -289,7 +289,7 @@ void endfeld(){               //Feld mit Kugeln
       delay(250);
       motor[RM] = -100;
       motor[LM] = -100;
-      delay(400);
+      delay(500);
       stopp();
     }
     else if(getTouchValue(S1) == 1){
