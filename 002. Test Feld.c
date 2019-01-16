@@ -1,5 +1,3 @@
-//HI
-
 #pragma config(Sensor, S1,     Touch,          sensorEV3_Touch, modeEV3Bump)
 #pragma config(Sensor, S2,     RS,             sensorEV3_Color)
 #pragma config(Sensor, S3,     LS,             sensorEV3_Color)
@@ -273,13 +271,15 @@ void endfeld(){               //Feld mit Kugeln
     rueckwaertsKurz();
     motor[LM] = 100;
     motor[RM] = 100;
-    waitUntil((getTouchValue(S1) == 1) || ((getColorReflected(RS) > 90) || (getColorReflected(LS) > 90)));
+    waitUntil((getTouchValue(S1) == 1) || ((getColorReflected(RS) > 90) || (getColorReflected(LS) > 90)) || (getColorReflected(RS) < 15));
     motor[LM] = 0;
     motor[RM] = 0;
-    if((getColorReflected(RS) < 15) || (getColorReflected(LS) < 15)){
-      drehen180();
-      motor[LM] = 0;
+    if(getColorReflected(RS) < 15){
+      motor[LM] = 50;
       motor[RM] = 0;
+      waitUntil(getColorReflected(LS) < 15);
+      motor[LM] = 0;
+      drehen180();
       motor[motorA] = 100;
       delay(1000000000000);
     }
