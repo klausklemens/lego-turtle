@@ -1,3 +1,5 @@
+//HI
+
 #pragma config(Sensor, S1,     Touch,          sensorEV3_Touch, modeEV3Bump)
 #pragma config(Sensor, S2,     RS,             sensorEV3_Color)
 #pragma config(Sensor, S3,     LS,             sensorEV3_Color)
