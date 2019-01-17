@@ -339,8 +339,21 @@ void hindernis(){           //Hindernis
 //////////////////////////////////////////////////////////////////////////////////
 
 task main(){
-  runterTeils();
-  hochGanz();
+  motor[motorD] = 50;
+	waitUntil(getTouchValue(S1) ==  1);
+	motor[motorD] = -50;
+	waitUntil(getTouchValue(S1) == 0);
+	motor[motorD] = 0;
+	setMotorBrakeMode(motorD, motorCoast);
+	motor[motorD] = -70;
+	waitUntilMotorStop(motorD);
+	motor[motorD] = 0;
+	wait10Msec(50);
+	setMotorBrakeMode(motorD, motorBrake);
+	resetMotorEncoder(motorD);
+	wait10Msec(10);
+	wait1Msec(250);
+	wait1Msec(500);
 
 
   aktiv = 1;
